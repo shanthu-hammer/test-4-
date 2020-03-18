@@ -28,22 +28,22 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="index.html">Mother & babyCare</a></div>
+							<div class="logo"><a href="{% url 'index' %}">Mother & babyCare</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li class="active"><a href="index.html">Home</a></li>
+									<li class="active"><a href="{% url 'index' %}">Home</a></li>
 									
 									
 									
-									<!--<li><a href="accounts/contact">contact</a></li>-->
+									<!--<li><a href="accounts/contact">contact</a></li>  accounts/register-->
 									
 									{% if user.is_authenticated %}
 										<li>Hello, {{user.first_name}}</li>
 									
-									<li><a href="accounts/logout">logout</a></li>
+									<li><a href="{% url 'logout' %}">logout</a></li>
 									{% else %}
-									<li><a href="accounts/register">Register</a></li>
-									<li><a href="accounts/login">Login</a></li>
+									<li><a href="{% url 'register' %}">Register</a></li>
+									<li><a href="{% url 'login' %}">Login</a></li>
 									{% endif %}
 								</ul>
 							</nav>
@@ -196,6 +196,8 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_subtitle">simply amazing places</div>
+					
+					{% if user.is_authenticated %}
 					<div class="section_title"><h2> Top Selling Products </h2></div>
 				</div>
 			</div>
@@ -207,7 +209,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{{ dest.img.url }}" alt="">
+								<img width="350"height="300"src="{{ dest.img.url }}" alt="">
 								{%if dest.offer  %}
 								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 								{% endif %}
@@ -219,7 +221,11 @@
 							</div>
 						</div>
 
+						
 						{%endfor%}
+						{%else%}
+						<div class="section_title"><h2> Please Login To View The Top Selling Products </h2></div>
+						{%endif%}
 
 					</div>
 				</div>

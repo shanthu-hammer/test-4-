@@ -1,31 +1,81 @@
+{% load static %}
+{% static 'images' as baseUrl %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Registeration</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  
 </head>
+<style>
+     body{
+         font-family: cursive;
+         color:black;
+     }
+   .bg-image{
+        height:100%;
+        width:100%;
+        background-image: url("C:\Users\santh\projecttt\shantha\static\images\bc.jpg") ;
+     
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* margin:0px; */
+    }
+    h1{
+        margin-left:700px;
+        
+    }
+   .SignUp{
+     margin-left:700px;
+     margin-top:30px;
+     margin-bottom:0px;
+     color:rgb(8, 8, 8);
+     font-family:cursive;
+ 
+   }
+   .btn{
+       margin-left: 75px;
+       margin-top:90px;
+   }
+</style>
+
 <body>
-    <form action="register" method="post">
+    
+        
+
+    <div class="bg-image">
+            <h1>SignUp Form</h1>
+    <form name="SignUp" method="post" class="SignUp">
         {% csrf_token %}
-
+        <label>First Name: </label><br>
         <input type="text" name="first_name" placeholder="First Name"><br>
+        <br>
+        <label>Last Name: </label><br>
         <input type="text" name="last_name" placeholder="Last Name"><br>
-        <input type="text" name="username" placeholder="Username"><br>
+        <br>
+        <label>Username: </label><br>
+        <input type="text" name="username" placeholder="Username" ><br>
+        <br>
+        <label>Password: </label><br>
         <input type="email" name="email" placeholder="email"><br>
+        <br>
+        <label>Password </label><br>
         <input type="password" name="password1" placeholder="Password"><br>
+        <br>
+        <label>Confirm Password </label><br>
         <input type="password" name="password2" placeholder="Confirm Password"><br>
-        <input type="Submit">
-
+        <br>
+        <input type="submit" name="SignUp" value="SignUp" class="btn btn-success btn-md" class="btn"/>
     </form>
-    <div>
-        {% for message in messages %}
+    {% for message in messages %}
         <h3>{{ message }}</h3>
         {% endfor %}
-    </div>
-   
+</div>
+
+
 </body>
 </html>
