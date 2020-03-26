@@ -1,1 +1,1 @@
-web: gunicorn SHANTHA.wsgi
+web: gunicorn shantha.wsgi
